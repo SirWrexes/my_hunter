@@ -19,6 +19,7 @@
     #undef __a
     #undef __Acleanup
     #undef __Aconst
+    #undef __Aconstructor
     #undef __Afallthrough
     #undef __Aformat
     #undef __Aleaf
@@ -66,6 +67,7 @@
     #define __a(attributes)       __attribute__(attributes)
     #define __Acleanup(janitor)   __a((cleanup(janitor)))
     #define __Aconst              __a((const))
+    #define __Aconstructor        __a((constructor))
     #define __Afallthrough        __a((fallthrough))
     #define __Aformat(type, f, a) __a((format(type, f, a)))
     #define __Aleaf               __a((leaf))
