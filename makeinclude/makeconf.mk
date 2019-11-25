@@ -5,17 +5,21 @@
 ## Make configuration for modules
 ##
 
-
 ifndef MKCONF
 MKCONF := 1
 
 #
 # Config
 ##########################################
-BIN             :=
+ifeq "$(NAME)" ""
+    NAME        := Untitled project
+endif
+ifeq "$(BIN)" ""
+    BIN         := a.out
+endif
 TESTBIN         := utest_$(BIN)
 DEBUGBIN        := debug_$(BIN)
-SHELL           := /bin/bash
+SHELL           ?= $(shell which bash)
 MAKE            := make --no-print-directory -C
 RM              := rm -f
 CP              := cp -t

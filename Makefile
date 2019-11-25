@@ -21,7 +21,7 @@ include ./makeinclude/format.mk
 # ↓ Progressbar script
 include ./makeinclude/progscript.mk
 
-# ↓ Unit test libc wrappers
+# ↓ Unit test lib wrappers
 include ./makeinclude/wrappers.mk
 
 # ↓ Various build configuration
