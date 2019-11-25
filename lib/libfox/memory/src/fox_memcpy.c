@@ -10,7 +10,6 @@
 
 static const size_t ULSIZE = sizeof(ulong_t);
 
-__Aconst
 void *fox_memcpy(void *dst, const void *src, size_t n)
 {
     ulong_t *srcp = (ulong_t *) src;
