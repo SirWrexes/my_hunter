@@ -28,7 +28,7 @@ def main():
   args = parser.parse_args()
 
   nchars = int(math.log(args.nsteps, 10)) + 1
-  fmt_str = "$(BARCOLOR)[$(NAME) | {:Xd}/{:Xd} | {:6.2f}%]$(COLOROFF)".replace("X", str(nchars))
+  fmt_str = "$(BARCOLOR)[$(strip $(subst ",, $(NAME))) | {:Xd}/{:Xd} | {:6.2f}%]$(COLOROFF)".replace("X", str(nchars))
   progress = 100 * args.stepno / args.nsteps
   sys.stdout.write(fmt_str.format(args.stepno, args.nsteps, progress))
   for item in args.remainder:

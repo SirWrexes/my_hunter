@@ -8,7 +8,7 @@
 #
 # Project and binary name
 ################################################
-NAME := My Hunter
+NAME := "My Hunter"
 BIN  := my_hunter
 #     It's IMPORTANT that the binary name
 # /!\ contains no whitespace !
@@ -20,8 +20,9 @@ BIN  := my_hunter
 ################################################
 MAIN := ./src/main.c
 # -------------------------------------------- #
-SRC :=
-SRC +=
+SRC := ./src/duck/duck_init.c
+SRC += ./src/scene/scene_init.c
+SRC += ./src/scene/scene_create.c
 ################################################
 
 #
@@ -42,9 +43,9 @@ TESTTMP +=
 #
 # Libs to include
 ################################################
-LIBS := sfml-graphics
-LIBS += sfml-system
-LIBS += sfml-window
+LIBS := csfml-graphics
+LIBS += csfml-system
+LIBS += csfml-window
 ################################################
 
 #
@@ -54,6 +55,7 @@ LIBS += sfml-window
 # FOXMODULES += datastruct
 # FOXMODULES += io
 # FOXMODULES += math
+FOXMODULES += memory
 # FOXMODULES += std
 # FOXMODULES += string
 ################################################
