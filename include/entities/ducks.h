@@ -1,15 +1,29 @@
 /*
 ** EPITECH PROJECT, 2019
-** My Hunter
+** <project_name>
 ** File description:
-** Entity data
+** ducks.h -- No description
 */
 
-#ifndef ENTITIES_H
-#define ENTITIES_H
+#ifndef DUCKS_H
+#define DUCKS_H
 
 #include "datastruct.h"
 
+/*
+** Duck types
+****************************************/
+enum duck_types {
+    DUCK_BLUE,
+    DUCK_BLACK,
+    DUCK_RED,
+
+    DUCK_COUNT
+};
+
+/*
+** Duck animation types
+****************************************/
 enum anims_duck {
     ANIM_DUCK_HORIZONTAL,
     ANIM_DUCK_DIAGONAL,
@@ -19,7 +33,7 @@ enum anims_duck {
 };
 
 /*
-** DUCK DEFAULTS
+** Duck defaults
 ****************************************/
 // Texture path
 extern const char *TEXTURE_DUCK_PATH;
@@ -34,4 +48,4 @@ extern const animtype_t ANIMTYPES_DUCK[ANIM_DUCK_COUNT];
 // Default entity info
 extern const entity_t ENT_DUCK;
 
-#endif /* !ENTITIES_H */
+#endif /* !DUCKS_H */

@@ -8,7 +8,7 @@
 #
 # Project and binary name
 ################################################
-NAME := "My Hunter"
+NAME := My Hunter
 BIN  := my_hunter
 #     It's IMPORTANT that the binary name
 # /!\ contains no whitespace !

@@ -19,6 +19,8 @@
 #include <SFML/Window/VideoMode.h>
 #include <sys/types.h>
 
+#include "fox_define.h"
+
 typedef void (*action_t)();
 
 typedef enum animation_type {
@@ -70,11 +72,16 @@ typedef struct game_entity_list {
 
 typedef struct game_scene {
     sfRenderWindow *window; // Scene window
+    sfVideoMode rwmode;     // Window video mode
+    unsigned rwstyle;       // Window style
     sfClock *clock;         // Scene timer
     sfMusic *bgmusic;       // Music for the scene
     sfEvent event;          // Event container
     spinfo_t spinfo;        // Background sprite
     entlist_t entities;     // Scene entities
 } scene_t;
+
+__Anonnull
+sfIntRect *spinfo_getrect(spinfo_t *spinfo);
 
 #endif /* !DATASTRUCT_H */
