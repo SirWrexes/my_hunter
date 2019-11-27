@@ -13,6 +13,9 @@
 
 // Game window title
 extern const char *WINDOW_TITLE;
+// Game clock
+// extern sfClock * const *CLOCK;
+sfClock *CLOCK(void);
 
 /*
 ** Scene type and default values array

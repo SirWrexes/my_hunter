@@ -15,7 +15,11 @@
 #include "datastruct.h"
 #include "entities/ducks.h"
 
-__Anonnull
-bool spawn_entity(entlist_t *entlist, unsigned enttype);
+// Add an enitity of type enttype to the list
+// Returns true in case of error
+bool spawn_entity(entlist_t *entlist, unsigned enttype) __Anonnull;
+
+// Go through an entlist and update each one
+void update_entities(entlist_t *entlist) __Anonnull;
 
 #endif /* !ENTITIES_H */

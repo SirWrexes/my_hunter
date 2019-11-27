@@ -16,6 +16,7 @@ INCDIRS += ./lib/libfox/extra/include
 # ---------------------------------------------------------------------------------------- #
 CFLAGS  := -std=gnu99
 CFLAGS  += -Wall -Wextra
+CFLAGS  += -Wdouble-promotion
 CFLAGS  += -Werror
 CFLAGS  += -fno-builtin
 CFLAGS  += $(foreach dir, $(INCDIRS), -iquote $(dir))

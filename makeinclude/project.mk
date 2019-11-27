@@ -20,9 +20,24 @@ BIN  := my_hunter
 ################################################
 MAIN := ./src/main.c
 # -------------------------------------------- #
-SRC := ./src/duck/duck_init.c
-SRC += ./src/scene/scene_init.c
-SRC += ./src/scene/scene_create.c
+# -- Animation tools
+SRC := ./src/animtools/is_on_last_frame.c
+SRC += ./src/animtools/set_to_next_frame.c
+SRC += ./src/animtools/get_current_rect.c
+SRC += ./src/animtools/update_rect_from_frame.c
+# -- Entity tools
+SRC += ./src/enttools/spawn_entity.c
+SRC += ./src/enttools/update_entities.c
+# -- Sprite tools
+SRC += ./src/spritetools/init_sprite.c
+# -- DUCKS
+SRC += ./src/ducks/ducks_common.c
+SRC += ./src/ducks/actions/idle_in_place.c
+# -- SCENES
+SRC += ./src/scenes/maps/map_init.c
+SRC += ./src/scenes/splash/splash_init.c
+SRC += ./src/scenes/scene_create.c
+SRC += ./src/scenes/scenes_common.c
 ################################################
 
 #

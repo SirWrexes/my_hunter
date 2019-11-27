@@ -11,15 +11,14 @@
 
 #include "scenes/scenes.h"
 
+const char *TEXTURE_SPLASH_PATH = "res/duckhunt_splash.jpeg";
+const sfTexture *TEXTURE_SPLASH = NULL;
+
 const sfIntRect TEXTRECT_SPLASH = {
     .left = 0,
     .top = 0,
     .width = TEXTRECT_SIZE_X_MAPS,
     .height = TEXTRECT_SIZE_Y_MAPS,
-};
-
-const animtype_t ANIMTYPES_SPLASH[1] = {
-    ANIM_TYPE_ONCE
 };
 
 const scene_t DEFAULT_SPLASH = {
@@ -30,11 +29,11 @@ const scene_t DEFAULT_SPLASH = {
         .bitsPerPixel = 32u
     },
     .rwstyle = sfDefaultStyle,
-    .clock = NULL,
     .bgmusic = NULL,
     .event = {0},
     .spinfo = {
-        .texture = &TEXTURE_SPLASH,
+        .textconst = &TEXTURE_SPLASH,
+        .share_texture = true,
         .sprite = NULL,
         .position = {.x = 0.f, .y = 0.f},
         .scale = {.x = SCALE_XY_SPLASH, .y = SCALE_XY_SPLASH},

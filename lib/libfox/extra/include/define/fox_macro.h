@@ -17,6 +17,7 @@
 #ifndef LIBFOX_MACRO_UNDEF
     #define LIBFOX_MACRO_UNDEF
     #undef __a
+    #undef __AalwaysIL
     #undef __Acleanup
     #undef __Aconst
     #undef __Aconstructor
@@ -65,6 +66,7 @@
     // For more information about these, check GNU GCC's docs
     // CAREFUL: These have RESTRICTED PORTABILITY
     #define __a(attributes)       __attribute__(attributes)
+    #define __AalwaysIL           __a((always_inline))
     #define __Acleanup(janitor)   __a((cleanup(janitor)))
     #define __Aconst              __a((const))
     #define __Aconstructor        __a((constructor))

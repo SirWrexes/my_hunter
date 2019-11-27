@@ -23,11 +23,11 @@ const animtype_t ANIMTYPES_MAP1[1] = {
 
 const scene_t DEFAULT_MAP1 = {
     .window = NULL,
-    .clock = NULL,
     .bgmusic = NULL,
     .event = {0},
     .spinfo = {
-        .texture = &TEXTURE_MAPS,
+        .textconst = &TEXTURE_MAPS,
+        .share_texture = true,
         .sprite = NULL,
         .position = {.x = 0.f, .y = 0.f},
         .scale = {.x = SCALE_XY_MAPS, .y = SCALE_XY_MAPS},
