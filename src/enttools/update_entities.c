@@ -7,9 +7,16 @@
 
 #include "datastruct.h"
 
-__Anonnull
-extern inline void update_entities(entlist_t *entlist)
+__Anonnull extern inline void update_entities(entlist_t *entlist)
 {
-    for (entity_t *ent = entlist->head; ent != NULL; ent = ent->next)
+    entity_t *ent = entlist->head;
+    entity_t *tmp;
+
+    while (ent != NULL) {
+        tmp = ent->next;
+        if (ent->alive && ent->health == 0)
+            ent->ondeath(ent);
         ent->idle(ent);
+        ent = tmp;
+    }
 }

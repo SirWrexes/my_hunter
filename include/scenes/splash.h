@@ -27,4 +27,10 @@ extern const animtype_t ANIMTYPES_SPLASH[1];
 // Default scene info
 extern const scene_t DEFAULT_SPLASH;
 
+
+/*
+** Splash updater
+****************************************/
+void splash_update(scene_t **splash);
+
 #endif /* !SPLASH_H */

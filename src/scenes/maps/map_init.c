@@ -5,16 +5,20 @@
 ** Scene defaults
 */
 
+#include <SFML/Graphics.h>
+
 #include "scenes/scenes.h"
 
 const char *TEXTURE_MAPS_PATH = "./res/duckhunt_bg.png";
 const sfTexture *TEXTURE_MAPS = NULL;
 
-const sfIntRect TEXTRECT_MAP1 = {
-    .left = 0,
-    .top = 0,
-    .width = TEXTRECT_SIZE_X_MAPS,
-    .height = TEXTRECT_SIZE_Y_MAPS,
+const sfIntRect TEXTRECT_MAPS[SCENE_COUNT] = {
+    [SCENE_MAP1] = {
+        .left = 0,
+        .top = 0,
+        .width = TEXTRECT_SIZE_X_MAPS,
+        .height = TEXTRECT_SIZE_Y_MAPS,
+    }
 };
 
 const animtype_t ANIMTYPES_MAP1[1] = {
@@ -23,6 +27,12 @@ const animtype_t ANIMTYPES_MAP1[1] = {
 
 const scene_t DEFAULT_MAP1 = {
     .window = NULL,
+    .rwstyle = sfDefaultStyle,
+    .rwmode = {
+        .width = TEXTRECT_SIZE_X_MAPS * SCALE_XY_MAPS,
+        .height = TEXTRECT_SIZE_Y_MAPS * SCALE_XY_MAPS,
+        .bitsPerPixel = 32u
+    },
     .bgmusic = NULL,
     .event = {0},
     .spinfo = {
@@ -45,5 +55,11 @@ const scene_t DEFAULT_MAP1 = {
         .n = 0,
         .head = NULL,
         .last = NULL,
-    }
+    },
+    .update = &map_update
 };
+
+__Aconstructor static void init_texture_maps(void)
+{
+    TEXTURE_MAPS = sfTexture_createFromFile(TEXTURE_MAPS_PATH, NULL);
+}

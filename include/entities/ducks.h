@@ -21,6 +21,8 @@ enum duck_types {
     DUCK_COUNT
 };
 
+
+
 /*
 ** Duck animation types
 ****************************************/
@@ -32,6 +34,8 @@ enum anims_duck {
 
     ANIM_DUCK_COUNT
 };
+
+
 
 /*
 ** Duck defaults
@@ -61,9 +65,18 @@ extern const sfTime *TOCK_DUCK;
 // Duck default entity info
 extern const entity_t ENT_DUCK;
 
+
+
 /*
 ** Duck actions
 ****************************************/
+// Default action every frame
+void duck_idle_death(entity_t *duck) __Anonnull;
 void duck_idle_in_place(entity_t *duck) __Anonnull;
+// Actions modifying the entity's stats
+void duck_lose_health(entity_t *duck, unsigned hp) __Anonnull;
+// Actions triggered by events
+void duck_on_click(entity_t *duck) __Anonnull;
+void duck_on_death(entity_t *duck) __Anonnull;
 
 #endif /* !DUCKS_H */

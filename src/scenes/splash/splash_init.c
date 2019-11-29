@@ -51,7 +51,8 @@ const scene_t DEFAULT_SPLASH = {
         .n = 0,
         .head = NULL,
         .last = NULL,
-    }
+    },
+    .update = &splash_update
 };
 
 __Aconstructor static void init_texture_splash(void)

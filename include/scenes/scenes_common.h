@@ -13,9 +13,10 @@
 
 // Game window title
 extern const char *WINDOW_TITLE;
-// Game clock
-// extern sfClock * const *CLOCK;
-sfClock *CLOCK(void);
+// Game clock poiter
+extern sfClock * const * CLOCKPTR;
+// Current scene pointer
+extern scene_t * const * SCENEPTR;
 
 /*
 ** Scene type and default values array

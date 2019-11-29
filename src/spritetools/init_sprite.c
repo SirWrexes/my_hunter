@@ -14,14 +14,11 @@
 
 __Anonnull bool init_sprite(spinfo_t *spinfo)
 {
-    sfTexture *texture = spinfo->share_texture
-        ? (sfTexture *) *spinfo->textconst
-        : spinfo->texture;
-
     spinfo->sprite = sfSprite_create();
     if (spinfo->sprite == NULL)
         return true;
-    sfSprite_setTexture(spinfo->sprite, texture, false);
+    sfSprite_setTexture(spinfo->sprite, spinfo->texture, false);
     sfSprite_setTextureRect(spinfo->sprite, *get_current_rect(&spinfo->anims));
+    sfSprite_setScale(spinfo->sprite, spinfo->scale);
     return false;
 }
