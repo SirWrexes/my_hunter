@@ -14,8 +14,7 @@
 #include "spritetools.h"
 #include "entities/entities.h"
 
-__Anonnull
-bool spawn_entity(entlist_t *list, unsigned type)
+__Anonnull bool spawn_entity(entlist_t *list, unsigned type)
 {
     entity_t *ent = NULL;
 

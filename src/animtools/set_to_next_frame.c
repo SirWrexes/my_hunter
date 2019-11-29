@@ -7,11 +7,10 @@
 
 #include <stdbool.h>
 
-#include "datastruct.h"
 #include "animtools.h"
+#include "datastruct.h"
 
-__Anonnull
-extern inline void set_to_next_frame(animinfo_t *anim)
+__Anonnull extern inline void set_to_next_frame(animinfo_t *anim)
 {
     bool onlast = is_on_last_frame(anim);
 
@@ -26,9 +25,7 @@ extern inline void set_to_next_frame(animinfo_t *anim)
         case ANIM_TYPE_PING_PONG:
             if (onlast)
                 anim->pongstep =
-                    (anim->pongstep == PP_FORWARD)
-                    ? PP_BACKWARD
-                    : PP_FORWARD;
+                    (anim->pongstep == PP_FORWARD) ? PP_BACKWARD : PP_FORWARD;
             anim->frame += anim->pongstep;
             break;
     }

@@ -7,11 +7,10 @@
 
 #include <stdbool.h>
 
-#include "datastruct.h"
 #include "animtools.h"
+#include "datastruct.h"
 
-__Anonnull
-extern inline bool is_on_last_frame(animinfo_t *a)
+__Anonnull extern inline bool is_on_last_frame(animinfo_t *a)
 {
     switch (a->types[a->current]) {
         case ANIM_TYPE_LOOP:
