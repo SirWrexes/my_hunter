@@ -6,6 +6,7 @@
 */
 
 #include <malloc.h>
+#include <stdlib.h>
 #include <SFML/Graphics.h>
 
 #include "fox_memory.h"
@@ -25,6 +26,7 @@ __Anonnull bool entity_create(entlist_t list, unsigned type)
         return true;
     ent->spinfo.entid = type;
     fox_memcpy(&ent->onclick, &DUCK_VTABLES[type], sizeof(entvt_t));
+    ent->spinfo.anims.current = rand() % ANIM_DUCK_COUNT;
     if (list->n++ == 0) {
         list->head = ent;
         list->last = ent;

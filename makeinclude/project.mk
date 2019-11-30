@@ -19,13 +19,15 @@ MAIN := ./src/main.c
 # -------------------------------------------- #
 # -- Animation tools
 SRC := ./src/animtools/get_current_rect.c
+SRC += ./src/animtools/get_current_type.c
 SRC += ./src/animtools/is_on_last_frame.c
 SRC += ./src/animtools/set_to_next_frame.c
 # -- Ducks
-SRC += ./src/ducks/actions/duck_update.c
 SRC += ./src/ducks/actions/duck_lose_health.c
+SRC += ./src/ducks/actions/duck_move.c
 SRC += ./src/ducks/actions/duck_on_click.c
 SRC += ./src/ducks/actions/duck_on_death.c
+SRC += ./src/ducks/actions/duck_update.c
 SRC += ./src/ducks/common/animinfo/animrects.c
 SRC += ./src/ducks/common/animinfo/animtypes.c
 SRC += ./src/ducks/common/animinfo/scales.c

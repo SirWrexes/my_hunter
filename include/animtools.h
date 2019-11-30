@@ -20,6 +20,9 @@ bool is_on_last_frame(animinfo_t a) __Anonnull;
 // Set anim->frame to the next step depending on animation type
 void set_to_next_frame(animinfo_t a) __Anonnull;
 
+// Get the current animation type
+unsigned get_current_type(animinfo_t a) __Anonnull;
+
 // Get the animation's current rectangle
 const sfIntRect *get_current_rect(animinfo_t a) __Anonnull;
 
