@@ -10,7 +10,7 @@
 #include "animtools.h"
 #include "datastruct.h"
 
-__Anonnull extern inline void set_to_next_frame(animinfo_t *anim)
+__Anonnull extern inline void set_to_next_frame(animinfo_t anim)
 {
     bool onlast = is_on_last_frame(anim);
 

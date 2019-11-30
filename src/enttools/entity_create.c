@@ -14,19 +14,17 @@
 #include "spritetools.h"
 #include "entities/entities.h"
 
-__Anonnull bool spawn_entity(entlist_t *list, unsigned type)
+__Anonnull bool entity_create(entlist_t list, unsigned type)
 {
-    entity_t *ent = NULL;
+    entity_t ent = NULL;
 
     if (type > DUCK_COUNT)
         return true;
-    ent = fox_memcpy(malloc(sizeof(*ent)), &ENT_DUCK, sizeof(*ent));
+    ent = fox_memcpy(malloc(sizeof(*ent)), &DUCK_DEFAULT, sizeof(*ent));
     if (ent == NULL)
         return true;
-    ent->spinfo.texture =
-        sfTexture_createFromFile(TEXTURE_DUCK_PATH, &TEXTRECT_DUCK[type]);
-    if (ent->spinfo.texture == NULL)
-        return true;
+    ent->spinfo.entid = type;
+    fox_memcpy(&ent->onclick, &DUCK_VTABLES[type], sizeof(entvt_t));
     if (list->n++ == 0) {
         list->head = ent;
         list->last = ent;

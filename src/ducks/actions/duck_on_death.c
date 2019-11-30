@@ -9,14 +9,9 @@
 
 #include "entities/entities.h"
 
-__Anonnull extern inline void duck_on_death(entity_t *e)
+__Anonnull extern inline void duck_on_death(entity_t e)
 {
-    static sfTime tock_death;
-    static const sfTime *tockptr = &tock_death;
-
-    tock_death = sfSeconds(0.5f);
-    e->tock = &tockptr;
-    e->idle = &duck_idle_death;
+    e->update = &duck_update_dead;
     e->spinfo.anims.frame = 0;
     e->spinfo.anims.current = ANIM_DUCK_DEATH;
     e->alive = false;

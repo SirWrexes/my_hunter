@@ -26,7 +26,7 @@ LDLIBS  += $(foreach mod, $(FOXMODULES), -lfox_$(strip $(mod)))
 LDLIBS  += $(foreach lib, $(LIBS), -l$(strip $(lib)))
 # ---------------------------------------------------------------------------------------- #
 OBJ     := $(SRC:.c=.o) $(DEPSRC:.c=.o)
-DEP     := $(OBJ:.o=.d) $(DEPSRC:.c=.d)
+DEP     := $(OBJ:.o=.d) $(DEPSRC:.c=.d) $(MAIN:.c=.d)
 -include $(DEP)
 .PRECIOUS := $(DEP)
 # ---------------------------------------------------------------------------------------- #

@@ -8,22 +8,13 @@
 #include <time.h>
 #include <stdlib.h>
 #include <SFML/System.h>
-#include <SFML/Graphics.h>
 
 #include "fox_define.h"
 
-#include "datastruct.h"
 #include "scenes/scenes.h"
 
-const char *WINDOW_TITLE = "Duck Hunt";
-
-sfClock * const *  CLOCKPTR = NULL;
-scene_t * const * SCENEPTR = NULL;
-
-const scene_t *SCENE_ARRAY[SCENE_COUNT] = {
-    [SCENE_MAP1] = &DEFAULT_MAP1,
-    [SCENE_SPLASH] = &DEFAULT_SPLASH,
-};
+sfClock *const *CLOCKPTR = NULL;
+struct game_scene *const *SCENEPTR = NULL;
 
 __Aconstructor static void init_clock(void)
 {

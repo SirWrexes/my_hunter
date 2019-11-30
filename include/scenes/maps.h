@@ -8,43 +8,16 @@
 #ifndef MAPS_H
 #define MAPS_H
 
-#include <stdbool.h>
-
 #include "datastruct.h"
-#include "scenes/scenes_common.h"
 
-/*
-** Map common defaults
-****************************************/
-// Texture path
-extern const char *TEXTURE_MAPS_PATH;
-// Texture pointer
-extern const sfTexture *TEXTURE_MAPS;
-// Texture rectangle sizes
-#define TEXTRECT_SIZE_X_MAPS (256)
-#define TEXTRECT_SIZE_Y_MAPS (240)
-// Texture scale
-#define SCALE_XY_MAPS (4.f)
-
-
-
-/*
-** MAP1 DEFAULTS
-****************************************/
-// Texutre pointer
-extern const sfTexture *TEXTURE_MAP1;
-// Texture rectangle
-extern const sfIntRect TEXTRECT_MAPS[SCENE_COUNT];
-// Animation types
-extern const animtype_t ANIMTYPES_MAP1[1];
-// Default scene info
-extern const scene_t DEFAULT_MAP1;
-
-
+#define TEXTURE_WIDTH_MAPS  (256)
+#define TEXTURE_HEIGHT_MAPS (240)
+#define SCALE_X_MAPS        (3.5f)
+#define SCALE_Y_MAPS        (3.5f)
 
 /*
 ** Map updater
 ****************************************/
-void map_update(scene_t **map) __Anonnull;
+void map_update(scene_t *map) __Anonnull;
 
 #endif /* !MAPS_H */

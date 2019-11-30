@@ -15,7 +15,7 @@
 
 int main()
 {
-    scene_t *scene = NULL;
+    scene_t scene = NULL;
 
     if (scene_create(&scene, SCENE_SPLASH)) {
         scene_destroy(&scene);
@@ -23,7 +23,7 @@ int main()
     }
     while (*SCENEPTR != NULL) {
         scene_update_current();
-        sfRenderWindow_pollEvent((**SCENEPTR).window, &(**SCENEPTR).event);
+        sfRenderWindow_pollEvent((**SCENEPTR).window.ptr, &(**SCENEPTR).event);
         if (EVENTHANDLER[(**SCENEPTR).event.type] != NULL)
             EVENTHANDLER[(**SCENEPTR).event.type]();
     }

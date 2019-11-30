@@ -7,7 +7,7 @@
 
 #include "entities/entities.h"
 
-__Anonnull extern inline void duck_on_click(entity_t *e)
+__Anonnull extern inline void duck_on_click(entity_t e)
 {
     duck_lose_health(e, 1);
 }

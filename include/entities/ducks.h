@@ -9,17 +9,18 @@
 #define DUCKS_H
 
 #include "datastruct.h"
+#include "scenes/maps.h"
 
 /*
 ** Duck types
 ****************************************/
-enum duck_types {
+typedef enum {
     DUCK_BLUE,
     DUCK_BLACK,
     DUCK_RED,
 
     DUCK_COUNT
-};
+} ducktype_t;
 
 
 
@@ -27,10 +28,13 @@ enum duck_types {
 ** Duck animation types
 ****************************************/
 enum anims_duck {
-    ANIM_DUCK_HORIZONTAL = 0,
-    ANIM_DUCK_DIAGONAL = 1,
-    ANIM_DUCK_VERTICAL = 2,
-    ANIM_DUCK_DEATH = 3,
+    ANIM_DUCK_HORIZONTAL_RIGHT,
+    ANIM_DUCK_HORIZONTAL_LEFT,
+    ANIM_DUCK_DIAGONAL_RIGHT,
+    ANIM_DUCK_DIAGONAL_LEFT,
+    ANIM_DUCK_VERTICAL_UP,
+    ANIM_DUCK_VERTICAL_DOWN,
+    ANIM_DUCK_DEATH,
 
     ANIM_DUCK_COUNT
 };
@@ -40,8 +44,16 @@ enum anims_duck {
 /*
 ** Duck defaults
 ****************************************/
-// Texture path
-extern const char *TEXTURE_DUCK_PATH;
+// Default values
+extern const struct game_entity DUCK_DEFAULT;
+// Animation rectangles
+extern const sfIntRect *DUCK_ANIMRECTS[];
+// Animation types
+extern const animtype_t DUCK_ANIMTYPES[];
+// Animation scales
+extern const sfVector2f **DUCK_SCALES[];
+// Texutres
+extern const sfTexture *DUCK_TEXTURES[];
 // Texture rectangle sizes
 #define TEXTRECT_HEIGHT_DUCK (148)
 #define TEXTRECT_WIDTH_DUCK (113)
@@ -53,30 +65,33 @@ extern const char *TEXTURE_DUCK_PATH;
         .width = TEXTRECT_WIDTH_DUCK,                \
         .height = TEXTRECT_HEIGHT_DUCK               \
     }
-// Texture rectangle defaults
-extern const sfIntRect TEXTRECT_DUCK[DUCK_COUNT];
-// Blue duck animation rectangles
-#define MAX_ANIMRECTS_DUCK (4)
-extern const sfIntRect ANIMRECTS_DUCK[ANIM_DUCK_COUNT][MAX_ANIMRECTS_DUCK];
-// Animation types
-extern const animtype_t ANIMTYPES_DUCK[ANIM_DUCK_COUNT];
-// Update time
-extern const sfTime *TOCK_DUCK;
-// Duck default entity info
-extern const entity_t ENT_DUCK;
-
+#define __SCALE_DUCK_NORMAL                  \
+    {                                        \
+        .x = SCALE_X_MAPS, .y = SCALE_Y_MAPS \
+    }
+#define __SCALE_DUCK_INVERTX                    \
+    {                                           \
+        .x = -(SCALE_X_MAPS), .y = SCALE_Y_MAPS \
+    }
+#define __SCALE_DUCK_INVERTY                    \
+    {                                           \
+        .x = SCALE_X_MAPS, .y = -(SCALE_Y_MAPS) \
+    }
+// Virtual tables
+extern const entvt_t DUCK_VTABLES[];
 
 
 /*
 ** Duck actions
 ****************************************/
 // Default action every frame
-void duck_idle_death(entity_t *duck) __Anonnull;
-void duck_idle_in_place(entity_t *duck) __Anonnull;
+void duck_update(entity_t duck) __Anonnull;
+void duck_update_dead(entity_t duck) __Anonnull;
+void duck_update_in_place(entity_t duck) __Anonnull;
 // Actions modifying the entity's stats
-void duck_lose_health(entity_t *duck, unsigned hp) __Anonnull;
+void duck_lose_health(entity_t duck, unsigned hp) __Anonnull;
 // Actions triggered by events
-void duck_on_click(entity_t *duck) __Anonnull;
-void duck_on_death(entity_t *duck) __Anonnull;
+void duck_on_click(entity_t duck) __Anonnull;
+void duck_on_death(entity_t duck) __Anonnull;
 
 #endif /* !DUCKS_H */

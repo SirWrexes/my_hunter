@@ -157,7 +157,7 @@
     #define RETURN(value, funcs...) return (0 ? : (funcs, value))
 
     // Returns false (sucess) if a != b
-    #define SUCCEED_IF_DIFF(a, b) ((a) == (b))
+    #define SUCCESS_IF_DIFF(a, b) ((a) == (b))
 
 #endif // LIBFOX_MACRO_DEF
 

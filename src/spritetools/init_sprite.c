@@ -12,13 +12,13 @@
 #include "animtools.h"
 #include "datastruct.h"
 
-__Anonnull bool init_sprite(spinfo_t *spinfo)
+__Anonnull bool init_sprite(spinfo_t spinfo)
 {
     spinfo->sprite = sfSprite_create();
     if (spinfo->sprite == NULL)
         return true;
-    sfSprite_setTexture(spinfo->sprite, spinfo->texture, false);
-    sfSprite_setTextureRect(spinfo->sprite, *get_current_rect(&spinfo->anims));
-    sfSprite_setScale(spinfo->sprite, spinfo->scale);
+    set_to_current_texture(spinfo);
+    set_to_current_rect(spinfo);
+    set_to_current_scale(spinfo);
     return false;
 }

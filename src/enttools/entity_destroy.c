@@ -10,7 +10,7 @@
 
 #include "datastruct.h"
 
-__Anonnull void entity_destroy(entlist_t *el, entity_t *ent)
+__Anonnull void entity_destroy(entlist_t el, entity_t ent)
 {
     if (ent->prev != NULL)
         ent->prev->next = ent->next;
@@ -21,8 +21,6 @@ __Anonnull void entity_destroy(entlist_t *el, entity_t *ent)
     if (el->last == ent)
         el->last = ent->prev;
     el->n -= 1;
-    if (ent->spinfo.share_texture == false)
-        sfTexture_destroy(ent->spinfo.texture);
     sfSprite_destroy(ent->spinfo.sprite);
     free(ent);
 }

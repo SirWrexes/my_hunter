@@ -9,25 +9,39 @@
 #define SCENES_COMMON_H
 
 #include "datastruct.h"
-#include "scenes/scenes.h"
 
-// Game window title
-extern const char *WINDOW_TITLE;
 // Game clock poiter
-extern sfClock * const * CLOCKPTR;
+extern sfClock *const *CLOCKPTR;
 // Current scene pointer
-extern scene_t * const * SCENEPTR;
+extern struct game_scene *const *SCENEPTR;
+// Default scene data
+extern const struct game_scene SCENE_DEFAULT;
 
 /*
 ** Scene type and default values array
 ****************************************/
+// All possible types of scene
 typedef enum {
     SCENE_SPLASH,
     SCENE_MAP1,
 
     SCENE_COUNT
 } scenetype_t;
-// Array containing pointer to default values for every scene
-extern const scene_t *SCENE_ARRAY[SCENE_COUNT];
+// Scene titles
+extern const char *SCENE_TITLES[];
+// Video mode for each scene's respective window
+extern const sfVideoMode SCENE_VIDEO_MODES[];
+// Scene textures
+extern const sfTexture *SCENE_TEXTURES[];
+// Scene texture areas
+extern const sfIntRect SCENE_TEXTURE_AREAS[];
+// Scene animation rectangles
+extern const sfIntRect *SCENE_ANIMRECTS[];
+// Scene animation types
+extern const animtype_t SCENE_ANIMTYPES[];
+// Scene animation scales
+extern const sfVector2f **SCENE_SCALES[];
+// Scene virtual tables
+extern const scnvt_t SCENE_VTABLES[];
 
 #endif /* !SCENES_COMMON_H */

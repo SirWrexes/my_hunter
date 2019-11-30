@@ -13,7 +13,7 @@
 #include "scenes/scenes.h"
 #include "entities/entities.h"
 
-__Anonnull void map_update(scene_t **map)
+__Anonnull void map_update(scene_t *map)
 {
     static bool resetcd = false;
     static sfTime cooldown;
@@ -26,7 +26,7 @@ __Anonnull void map_update(scene_t **map)
     cooldown.microseconds -= sfClock_getElapsedTime(*CLOCKPTR).microseconds;
     if (cooldown.microseconds <= 0) {
         if (((unsigned) rand()) % 100 + 1 <= chance)
-            spawn_entity(&(**map).entities, ((unsigned) rand()) % DUCK_COUNT);
+            entity_create(&(**map).entities, ((unsigned) rand()) % DUCK_COUNT);
         resetcd = true;
     }
     scene_update(map);
