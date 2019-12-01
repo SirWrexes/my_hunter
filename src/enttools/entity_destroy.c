@@ -12,6 +12,8 @@
 
 __Anonnull void entity_destroy(entlist_t el, entity_t ent)
 {
+    if (ent->ondestroy != NULL)
+        ent->ondestroy(ent);
     if (ent->prev != NULL)
         ent->prev->next = ent->next;
     if (ent->next != NULL)

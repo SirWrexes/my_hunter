@@ -27,6 +27,8 @@ SRC += ./src/ducks/actions/duck_lose_health.c
 SRC += ./src/ducks/actions/duck_move.c
 SRC += ./src/ducks/actions/duck_on_click.c
 SRC += ./src/ducks/actions/duck_on_death.c
+SRC += ./src/ducks/actions/duck_oncreate.c
+SRC += ./src/ducks/actions/duck_ondestroy.c
 SRC += ./src/ducks/actions/duck_update.c
 SRC += ./src/ducks/common/animinfo/animrects.c
 SRC += ./src/ducks/common/animinfo/animtypes.c
@@ -50,6 +52,7 @@ SRC += ./src/scenes/common/animinfo/scales.c
 SRC += ./src/scenes/common/animinfo/textures.c
 SRC += ./src/scenes/common/default.c
 SRC += ./src/scenes/common/global_data.c
+SRC += ./src/scenes/common/sfx.c
 SRC += ./src/scenes/common/vtables.c
 SRC += ./src/scenes/common/window.c
 SRC += ./src/scenes/maps/map_update.c
@@ -59,6 +62,9 @@ SRC += ./src/scenes/scene_create.c
 SRC += ./src/scenes/scene_destroy.c
 SRC += ./src/scenes/scene_update.c
 SRC += ./src/scenes/scene_create_window_from_self.c
+# -- Sfx tools
+SRC += ./src/sfxtools/sfx_play.c
+SRC += ./src/sfxtools/sfx_stop.c
 # -- Sprite tools
 SRC += ./src/spritetools/get_current_scale.c
 SRC += ./src/spritetools/init_sprite.c
@@ -100,9 +106,9 @@ LIBS += csfml-audio
 # to the libfox modules you use in the project.
 ################################################
 # FOXMODULES += datastruct
-# FOXMODULES += io
+FOXMODULES += io
 # FOXMODULES += math
 FOXMODULES += memory
 # FOXMODULES += std
-# FOXMODULES += string
+FOXMODULES += string
 ################################################

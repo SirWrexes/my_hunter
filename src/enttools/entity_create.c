@@ -15,6 +15,18 @@
 #include "spritetools.h"
 #include "entities/entities.h"
 
+__Anonnull static void adjust_nextprev_ptrs(entlist_t list, entity_t ent)
+{
+    if (list->n++ == 0) {
+        list->head = ent;
+        list->last = ent;
+    } else {
+        ent->prev = list->last;
+        list->last->next = ent;
+        list->last = ent;
+    }
+}
+
 __Anonnull bool entity_create(entlist_t list, unsigned type)
 {
     entity_t ent = NULL;
@@ -26,14 +38,8 @@ __Anonnull bool entity_create(entlist_t list, unsigned type)
         return true;
     ent->spinfo.entid = type;
     fox_memcpy(&ent->onclick, &DUCK_VTABLES[type], sizeof(entvt_t));
-    ent->spinfo.anims.current = rand() % ANIM_DUCK_COUNT;
-    if (list->n++ == 0) {
-        list->head = ent;
-        list->last = ent;
-    } else {
-        ent->prev = list->last;
-        list->last->next = ent;
-        list->last = ent;
-    }
-    return init_sprite(&ent->spinfo);
+    adjust_nextprev_ptrs(list, ent);
+    if (ent->oncreate != NULL)
+        ent->oncreate(ent);
+    return false;
 }

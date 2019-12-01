@@ -8,13 +8,13 @@
 #include "entities/entities.h"
 
 static const sfVector2f DUCK_SCALE_NORMAL[] = {
-    [0 ... 4] = __SCALE_DUCK_NORMAL
+    [0 ... 6] = __SCALE_DUCK_NORMAL
 };
 static const sfVector2f DUCK_SCALE_INVERTX[] = {
-    [0 ... 4] = __SCALE_DUCK_INVERTX
+    [0 ... 6] = __SCALE_DUCK_INVERTX
 };
 static const sfVector2f DUCK_SCALE_INVERTY[] = {
-    [0 ... 4] = __SCALE_DUCK_INVERTY
+    [0 ... 6] = __SCALE_DUCK_INVERTY
 };
 
 static const sfVector2f *DUCK_SCALES_ANIMS[ANIM_DUCK_COUNT] = {

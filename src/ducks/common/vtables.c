@@ -11,9 +11,9 @@
 const entvt_t DUCK_VTABLES[DUCK_COUNT] = {
     [0 ... DUCK_COUNT - 1] = {
         .onclick = &duck_on_click,
-        .oncreate = NULL,
+        .oncreate = &duck_oncreate,
         .ondeath = &duck_on_death,
-        .ondestroy = NULL,
+        .ondestroy = &duck_ondestroy,
         .update = &duck_update,
     }
 };

@@ -19,6 +19,7 @@ __Anonnull bool init_sprite(spinfo_t spinfo)
         return true;
     set_to_current_texture(spinfo);
     set_to_current_rect(spinfo);
+    set_to_current_position(spinfo);
     set_to_current_scale(spinfo);
     return false;
 }

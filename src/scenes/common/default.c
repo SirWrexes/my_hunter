@@ -16,7 +16,7 @@ const struct game_scene SCENE_DEFAULT = {
     .window = {
         .title = SCENE_TITLES,
         .mode = SCENE_VIDEO_MODES,
-        .style = sfDefaultStyle,
+        .style = sfTitlebar | sfClose,
         .ptr = NULL,
     },
     .bgmusic = NULL,

@@ -32,6 +32,23 @@ typedef struct sprite_info *spinfo_t;
 typedef struct game_entity *entity_t;
 typedef struct game_entity_list *entlist_t;
 typedef struct game_scene *scene_t;
+typedef struct sound_effect *sfx_t;
+
+
+
+/*
+** Sound effects
+****************************************/
+struct sound_effect {
+    const char *path;           // Path to the sound
+    unsigned id;                // Unique sound id
+    unsigned type;              // Index of SFX_DEULTS used create the object
+    bool loop;                  // Loop the sound effect
+    const sfSoundBuffer **buff; // Sound buffer pointer
+    sfSound *sound;             // Sound entity
+    sfx_t next;                 // Next sfx in the list
+};
+
 
 
 /*
@@ -59,12 +76,12 @@ typedef void (*scnfunc_t)(scene_t *);
         type##func_t ondestroy; \
         type##func_t update;    \
     }
-#define VTABLE_INIT_NULL        \
-        .onclick = NULL,        \
-        .oncreate = NULL,       \
-        .ondeath = NULL,        \
-        .ondestroy = NULL,      \
-        .update = NULL
+#define VTABLE_INIT_NULL    \
+    .onclick = NULL,        \
+    .oncreate = NULL,       \
+    .ondeath = NULL,        \
+    .ondestroy = NULL,      \
+    .update = NULL
 
 // Entity virtual table
 typedef __VTABLE(ent) entvt_t;

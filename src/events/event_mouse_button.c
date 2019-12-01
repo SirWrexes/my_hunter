@@ -14,10 +14,7 @@
 #include "scenes/scenes.h"
 #include "entities/entities.h"
 #include "animtools.h"
-
-static const char *SHOOT_SOUND = "res/sound/shoot.ogg";
-static sfSoundBuffer * const *CLICKBUFF = NULL;
-static sfSound * const *CLICKSOUND = NULL;
+#include "sfxtools.h"
 
 void event_mouse_button(void)
 {
@@ -28,7 +25,7 @@ void event_mouse_button(void)
     tick.microseconds += sfClock_getElapsedTime(*CLOCKPTR).microseconds;
     if (tick.microseconds < sfSeconds(0.1).microseconds)
         return;
-    sfSound_play(*CLICKSOUND);
+    sfx_play(SFX_SHOOT);
     for (entity_t e = (**SCENEPTR).entities.head; e != NULL; e = e->next) {
         spos = sfSprite_getGlobalBounds(e->spinfo.sprite);
         if (!sfFloatRect_contains(&spos, mpos.x, mpos.y))
@@ -37,16 +34,4 @@ void event_mouse_button(void)
             e->onclick(e);
     }
     tick.microseconds = 0;
-}
-
-__Aconstructor static void init_click_sound(void)
-{
-    static sfSoundBuffer *sbuff = NULL;
-    static sfSound *sound = NULL;
-
-    sbuff = sfSoundBuffer_createFromFile(SHOOT_SOUND);
-    sound = sfSound_create();
-    sfSound_setBuffer(sound, sbuff);
-    CLICKBUFF = &sbuff;
-    CLICKSOUND = &sound;
 }

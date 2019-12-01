@@ -84,14 +84,20 @@ extern const entvt_t DUCK_VTABLES[];
 /*
 ** Duck actions
 ****************************************/
+// Action when the duck is spawned
+void duck_oncreate(entity_t duck) __Anonnull;
 // Default action every frame
 void duck_update(entity_t duck) __Anonnull;
 void duck_update_dead(entity_t duck) __Anonnull;
 void duck_update_in_place(entity_t duck) __Anonnull;
+// Move the duck depeding on its current animation
+void duck_move(entity_t duck) __Anonnull;
 // Actions modifying the entity's stats
 void duck_lose_health(entity_t duck, unsigned hp) __Anonnull;
 // Actions triggered by events
 void duck_on_click(entity_t duck) __Anonnull;
 void duck_on_death(entity_t duck) __Anonnull;
+// Action after a duck is destroyed
+void duck_ondestroy(entity_t __Aunused e);
 
 #endif /* !DUCKS_H */

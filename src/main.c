@@ -8,16 +8,23 @@
 #include <stdlib.h>
 #include <SFML/Graphics.h>
 
+#include "fox_string.h"
+#include "fox_io.h"
+
 #include "datastruct.h"
 #include "events.h"
-#include "scenes/scenes.h"
 #include "entities/entities.h"
+#include "scenes/scenes.h"
 
-int main()
+int main(int ac, char **av)
 {
     scene_t scene = NULL;
 
-    if (scene_create(&scene, SCENE_SPLASH)) {
+    if (ac > 1 && !fox_strcmp(av[1], "-h")) {
+        fox_eputstr("My Hunter is an Epitech project.\n"
+            "Click the ducks to shoot them, have fun !\n");
+        return EXIT_FAILURE;
+    } else if (ac > 1 || scene_create(&scene, SCENE_SPLASH)) {
         scene_destroy(&scene);
         return EXIT_FAILURE;
     }

@@ -12,17 +12,20 @@
 #include "entities/entities.h"
 #include "spritetools.h"
 #include "animtools.h"
+#include "sfxtools.h"
 
 __Anonnull extern inline void duck_update(entity_t duck)
 {
     if (!entity_update_tick(duck))
         return;
+    if (sprite_is_out_of_bounds(&duck->spinfo)) {
+        duck->ondestroy = NULL;
+        entity_destroy(&(**SCENEPTR).entities, duck);
+    }
     set_to_next_frame(&duck->spinfo.anims);
     update_rect_from_frame(&duck->spinfo);
-    set_to_current_scale(&duck->spinfo);
-    update_position_info(&duck->spinfo);
-    duck->spinfo.position.x += 25;
-    set_to_current_position(&duck->spinfo);
+    duck_move(duck);
+    sfx_play(SFX_DUCK_FLAP);
     duck->tick = sfTime_Zero;
 }
 
